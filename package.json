@@ -1,0 +1,42 @@
+{
+  "name": "netscope",
+  "version": "1.0.0",
+  "description": "A lightweight Windows network monitor built with Electron.",
+  "main": "src/main.js",
+  "author": "Itz-Veyn-Dev",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "dev.itzveyn.netscope",
+    "productName": "NetScope",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "NetScope-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}
