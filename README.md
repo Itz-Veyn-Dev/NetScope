@@ -1,47 +1,69 @@
 # NetScope
 
-A lightweight Windows network monitor built with Electron, JavaScript, HTML, and CSS.
+A lightweight Windows network monitor built with Electron.
+
+NetScope provides a clean, straightforward interface for viewing network adapter information and monitoring network activity on Windows.
 
 ## Features
 
-- Live combined download and upload speed
-- Cumulative bytes received and sent by Windows network adapters
-- Simple 60-sample traffic chart
-- Adapter status, link speed, descriptions, and counters
-- Refreshes once per second
-- No account, cloud service, or database
-- Minimal dependencies and a compact interface
+- **Live network monitoring** — periodically retrieves network adapter statistics.
+- **Adapter information** — displays available details about network interfaces.
+- **Lightweight desktop app** — built with Electron and JavaScript.
+- **Simple interface** — a clean UI focused on useful information without unnecessary clutter.
+- **Windows-focused** — uses native Windows networking tools to retrieve adapter statistics.
+
+## Preview
+
+![NetScope application screenshot](docs/netscope-preview.png)
+
+## Tech Stack
+
+- JavaScript
+- Electron
+- HTML and CSS
+- Windows PowerShell networking cmdlets
 
 ## Requirements
 
 - Windows 10 or Windows 11
-- Node.js 20+ (for development)
-- npm
+- Node.js and npm (required to run from source)
+- PowerShell with the `NetAdapter` module available
 
-NetScope reads adapter counters through Windows PowerShell's `Get-NetAdapterStatistics` and `Get-NetAdapter` cmdlets. Administrator privileges are not normally required. Adapter counters are cumulative Windows counters, not necessarily totals for the current day or month. Virtual adapters may also appear.
+## Run Locally
 
-## Run from source
+Clone the repository:
+
+```bash
+git clone https://github.com/Itz-Veyn-Dev/NetScope.git
+cd NetScope
+```
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Start the application:
+
+```bash
 npm start
 ```
 
-## Build the Windows installer
+## Download
 
-```bash
-npm run dist
-```
+Prebuilt Windows installers will be published in the project's [GitHub Releases](https://github.com/Itz-Veyn-Dev/NetScope/releases).
 
-The installer is written to the `release` directory.
+## How It Works
 
-## Notes
+NetScope retrieves network adapter statistics through Windows PowerShell and displays the available information in its desktop interface.
 
-- Live adapter statistics are currently Windows-only.
-- If PowerShell's networking cmdlets are unavailable, the app displays a clear error instead of fabricated data.
-- The app uses Electron context isolation and a restricted preload bridge. Renderer code does not have direct Node.js access.
-- Network speed is calculated from differences between consecutive Windows byte counters while NetScope is running.
+Live statistics depend on the network adapters and networking capabilities available on the system.
+
+## Platform Support
+
+NetScope currently targets Windows. Other operating systems are not officially supported.
 
 ## License
 
-MIT
+A license has not yet been specified. Until one is added to this repository, all rights remain with the copyright holder.
